@@ -1,0 +1,7 @@
+.weather-icon {
+  font-size: 100px;
+}
+
+.daily-weather-forecast {
+  display: flex;
+}
