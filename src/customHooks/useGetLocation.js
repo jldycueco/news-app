@@ -15,7 +15,6 @@ const useGetLocation = () => {
 
       setLat(result.data.location.lat);
       setLng(result.data.location.lng);
-      console.log(result.data);
     };
 
     fetchedData();

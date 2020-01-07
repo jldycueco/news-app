@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-//const proxyurl = "https://cors-anywhere.herokuapp.com/"
-
 export default function useAxios(initialData, initialUrl) {
   const [fetchedData, setFetchedData] = useState(initialData);
   const [url, setUrl] = useState(initialUrl);
@@ -18,7 +16,6 @@ export default function useAxios(initialData, initialUrl) {
         if (result.data.error) {
           setIsError(true);
         } else {
-          console.log(result);
           setFetchedData(result.data);
         }
       } catch (err) {

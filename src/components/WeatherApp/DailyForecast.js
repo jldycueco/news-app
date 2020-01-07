@@ -1,7 +1,37 @@
 import React from 'react';
 import WeatherIcon from 'react-icons-weather';
 import TemperatureComponent from './TemperatureComponent';
-import GetDay from './GetDay';
+
+const GetDay = ({ day }) => {
+  let dayString;
+  switch (day) {
+    case 0:
+      dayString = 'Sun';
+      break;
+    case 1:
+      dayString = 'Mon';
+      break;
+    case 2:
+      dayString = 'Tue';
+      break;
+    case 3:
+      dayString = 'Wed';
+      break;
+    case 4:
+      dayString = 'Thu';
+      break;
+    case 5:
+      dayString = 'Fri';
+      break;
+    case 6:
+      dayString = 'Sat';
+      break;
+    default:
+      dayString = 'N/A';
+  }
+
+  return <div>{dayString}</div>;
+};
 
 const DailyForecast = ({ isToggle, daily }) => {
   return (
