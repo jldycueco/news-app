@@ -1,22 +1,19 @@
 import React from 'react';
-import ConvertTemperature from './ConvertTemperature';
+import { ConvertTemperature } from './ConvertFunctions';
 
 const TemperatureComponent = ({ isToggle, data }) => {
+  const { C, F } = isToggle;
+
   return (
     <>
-      {isToggle.C && (
+      {C && (
         <div>
           <ConvertTemperature temp={data} units="C" />
         </div>
       )}
-      {isToggle.F && (
+      {F && (
         <div>
           <ConvertTemperature temp={data} units="F" />
-        </div>
-      )}
-      {isToggle.K && (
-        <div>
-          <ConvertTemperature temp={data} units="K" />
         </div>
       )}
     </>

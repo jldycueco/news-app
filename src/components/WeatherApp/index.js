@@ -1,19 +1,32 @@
 import React, { useState } from 'react';
 import WeatherIcon from 'react-icons-weather';
-import './GetLocation.css';
-import useGetLocation from '../CustomHooks/useGetLocation';
-import useAxios from '../CustomHooks/useAxios';
+import './index.css';
+import useGetLocation from '../../customHooks/useGetLocation';
+import useAxios from '../../customHooks/useAxios';
 import TemperatureComponent from './TemperatureComponent';
 import DailyForecast from './DailyForecast';
+import { makeStyles, Typography } from '@material-ui/core';
 
 const proxy = `https://cors-anywhere.herokuapp.com/`;
 const api_key = process.env.REACT_APP_DARKSKY_API_KEY;
 
-const GetWeather = () => {
+const useStyles = makeStyles({
+  card: {
+    minWidth: 300,
+    marginBottom: '20px',
+  },
+  title: {
+    fontSize: 24,
+    textTransform: 'uppercase',
+  },
+});
+
+const WeatherApp = () => {
+  const classes = useStyles();
+
   const [isToggle, setIsToggle] = useState({
     C: true,
     F: false,
-    K: false,
   });
 
   const { lat, lng } = useGetLocation();
@@ -25,22 +38,18 @@ const GetWeather = () => {
   const handleToggleButton = (event) => {
     const name = event.target.name;
     if (name === 'C') {
-      setIsToggle({ C: true, F: false, K: false });
+      setIsToggle({ C: true, F: false });
     } else if (name === 'F') {
-      setIsToggle({ C: false, F: true, K: false });
-    } else {
-      setIsToggle({ C: false, F: false, K: true });
+      setIsToggle({ C: false, F: true });
     }
   };
-
-  console.log(fetchedData);
 
   return (
     <>
       <div className="weather-app-container">
         {Object.keys(fetchedData).length > 0 ? (
           <div>
-            <div>{fetchedData.timezone}</div>
+            <Typography>{fetchedData.timezone}</Typography>
             <div>
               <p>{fetchedData.currently.summary}</p>
               <TemperatureComponent
@@ -79,15 +88,9 @@ const GetWeather = () => {
           value="F"
           onClick={handleToggleButton}
         />
-        <input
-          type="submit"
-          name="K"
-          value="K"
-          onClick={handleToggleButton}
-        />
       </div>
     </>
   );
 };
 
-export default GetWeather;
+export default WeatherApp;

@@ -1,12 +1,12 @@
 import React, { createContext, useState } from 'react';
-import useAxios from '../components/CustomHooks/useAxios';
+import useAxios from '../customHooks/useAxios';
 
 const newsApiKey = process.env.REACT_APP_NEWS_API_KEY;
 
 export const SearchContext = createContext();
 
 const SearchContextProvider = (props) => {
-  const [query, setQuery] = useState(' ');
+  const [query, setQuery] = useState('');
 
   const [{ fetchedData, isLoading, isError }, setUrl] = useAxios(
     { articles: [] },
@@ -25,14 +25,6 @@ const SearchContextProvider = (props) => {
     setQuery('');
   };
 
-  const sideBarSubmit = (event) => {
-    const name = event.target.name;
-    event.preventDefault();
-    setUrl(
-      `https://newsapi.org/v2/top-headlines?country=us&category=${name}&pageSize=100&apiKey=${newsApiKey}`,
-    );
-  };
-
   return (
     <SearchContext.Provider
       value={{
@@ -42,7 +34,7 @@ const SearchContextProvider = (props) => {
         isError,
         handleChange,
         handleSubmit,
-        sideBarSubmit,
+        setUrl,
       }}
     >
       {props.children}
