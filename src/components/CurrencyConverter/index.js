@@ -6,11 +6,15 @@ const useStyles = makeStyles({
   title: {
     fontSize: 24,
     textTransform: 'uppercase',
+    marginBottom: '20px',
+  },
+  currency: {
+    marginBottom: '10px',
   },
 });
 
 const CurrencyConverter = () => {
-  const [{ fetchedData }] = useAxios(
+  const [{ isLoading, isError, fetchedData }] = useAxios(
     {},
     `https://api.exchangeratesapi.io/latest?base=PHP`,
   );
@@ -23,20 +27,20 @@ const CurrencyConverter = () => {
           <Typography className={classes.title} gutterBottom>
             Foreign Exchange
           </Typography>
-          <Typography>
-            {(1 / fetchedData.rates.AUD).toFixed(2)} PHP = 1 AUD
+          <Typography className={classes.currency}>
+            {(1 / fetchedData.rates.AUD).toFixed(2)} PHP = 1.00 AUD
           </Typography>
-          <Typography>
-            {(1 / fetchedData.rates.CAD).toFixed(2)} PHP = 1 CAD
+          <Typography className={classes.currency}>
+            {(1 / fetchedData.rates.CAD).toFixed(2)} PHP = 1.00 CAD
           </Typography>
-          <Typography>
-            {(1 / fetchedData.rates.EUR).toFixed(2)} PHP = 1 EUR
+          <Typography className={classes.currency}>
+            {(1 / fetchedData.rates.EUR).toFixed(2)} PHP = 1.00 EUR
           </Typography>
-          <Typography>
-            {(1 / fetchedData.rates.GBP).toFixed(2)} PHP = 1 GBP
+          <Typography className={classes.currency}>
+            {(1 / fetchedData.rates.GBP).toFixed(2)} PHP = 1.00 GBP
           </Typography>
-          <Typography>
-            {(1 / fetchedData.rates.USD).toFixed(2)} PHP = 1 USD
+          <Typography className={classes.currency}>
+            {(1 / fetchedData.rates.USD).toFixed(2)} PHP = 1.00 USD
           </Typography>
         </>
       ) : (

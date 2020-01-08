@@ -174,12 +174,12 @@ export default function Navbar() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={classes.paper}>
-                <NewsList />
-              </Paper>
+            <Grid item xs={12} md={8} lg={8}>
+              {/* <Paper className={classes.paper}> */}
+              <NewsList />
+              {/* </Paper> */}
             </Grid>
-            <Grid item xs={12} md={4} lg={3}>
+            <Grid item xs={12} md={4} lg={4}>
               <Paper className={fixedHeightPaper}>
                 <WeatherApp />
               </Paper>

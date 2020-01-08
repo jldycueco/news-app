@@ -1,12 +1,12 @@
 import React from 'react';
-import NavBar from './components/Navbar';
+import MainPage from './components/Page';
 import SearchContextProvider from './context/SearchContext';
 
 function App() {
   return (
     <>
       <SearchContextProvider>
-        <NavBar />
+        <MainPage />
       </SearchContextProvider>
     </>
   );

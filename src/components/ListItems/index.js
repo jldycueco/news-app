@@ -6,6 +6,7 @@ import {
   ListItemText,
 } from '@material-ui/core';
 import { SearchContext } from '../../context/SearchContext';
+import FlagIcon from '@material-ui/icons/Flag';
 import PublicIcon from '@material-ui/icons/Public';
 import BusinessIcon from '@material-ui/icons/Business';
 import TheatersIcon from '@material-ui/icons/Theaters';
@@ -17,18 +18,23 @@ import WbIncandescentIcon from '@material-ui/icons/WbIncandescent';
 const newsApiKey = process.env.REACT_APP_NEWS_API_KEY;
 
 const ListItems = () => {
-  const { setUrl } = useContext(SearchContext);
+  const { setUrl, handleUpdateUrl } = useContext(SearchContext);
 
   return (
     <>
       <List>
         <ListItem
           button
-          onClick={() =>
-            setUrl(
-              `https://newsapi.org/v2/top-headlines?country=us&category=general&pageSize=100&apiKey=${newsApiKey}`,
-            )
-          }
+          onClick={() => handleUpdateUrl(`general`, `ph`)}
+        >
+          <ListItemIcon>
+            <FlagIcon />
+          </ListItemIcon>
+          <ListItemText primary="Philippines" />
+        </ListItem>
+        <ListItem
+          button
+          onClick={() => handleUpdateUrl(`general`, `us`)}
         >
           <ListItemIcon>
             <PublicIcon />

@@ -25,6 +25,12 @@ const SearchContextProvider = (props) => {
     setQuery('');
   };
 
+  const handleUpdateUrl = (category, country) => {
+    setUrl(
+      `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&pageSize=100&apiKey=${newsApiKey}`,
+    );
+  };
+
   return (
     <SearchContext.Provider
       value={{
@@ -35,6 +41,7 @@ const SearchContextProvider = (props) => {
         handleChange,
         handleSubmit,
         setUrl,
+        handleUpdateUrl,
       }}
     >
       {props.children}

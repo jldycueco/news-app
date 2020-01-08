@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import WeatherIcon from 'react-icons-weather';
-import './index.css';
 import useGetLocation from '../../customHooks/useGetLocation';
 import useAxios from '../../customHooks/useAxios';
 import TemperatureComponent from './TemperatureComponent';
@@ -19,6 +18,13 @@ const useStyles = makeStyles({
     fontSize: 24,
     textTransform: 'uppercase',
   },
+  weatherIcon: {
+    fontSize: '50px',
+    margin: '0.25em 0 0.25em 0',
+  },
+  dailyForecast: {
+    display: 'flex',
+  },
 });
 
 const WeatherApp = () => {
@@ -30,7 +36,7 @@ const WeatherApp = () => {
   });
 
   const { lat, lng } = useGetLocation();
-  const [{ fetchedData }] = useAxios(
+  const [{ isLoading, isError, fetchedData }] = useAxios(
     {},
     `${proxy}https://api.darksky.net/forecast/${api_key}/${lat},${lng}`,
   );
@@ -46,7 +52,7 @@ const WeatherApp = () => {
 
   return (
     <>
-      <div className="weather-app-container">
+      <div>
         {Object.keys(fetchedData).length > 0 ? (
           <div>
             <Typography>{fetchedData.timezone}</Typography>
@@ -59,11 +65,11 @@ const WeatherApp = () => {
               <WeatherIcon
                 name="darksky"
                 iconId={fetchedData.currently.icon}
-                className="weather-icon"
+                className={classes.weatherIcon}
               />
             </div>
 
-            <div className="daily-weather-forecast">
+            <div className={classes.dailyForecast}>
               {fetchedData.daily.data.map((daily) => (
                 <DailyForecast
                   key={daily.time}

@@ -35,7 +35,11 @@ const GetDay = ({ day }) => {
 
 const DailyForecast = ({ isToggle, daily }) => {
   return (
-    <div>
+    <div
+      style={{
+        marginRight: '0.75em',
+      }}
+    >
       <div>
         <WeatherIcon name="darksky" iconId={daily.icon} />
       </div>
