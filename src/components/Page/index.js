@@ -20,9 +20,11 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import SearchBar from './SearchBar';
 import MainListItems from '../ListItems';
-import NewsList from '../NewsList';
+import NewsList from '../News/NewsList';
 import CurrencyConverter from '../CurrencyConverter';
 import WeatherApp from '../WeatherApp';
+import MetaTags from '../MetaTags';
+import favicon from '../../assets/images/newsicon.jpg';
 
 const drawerWidth = 240;
 
@@ -98,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '20px',
   },
   fixedHeight: {
-    maxHeight: 300,
+    maxHeight: 350,
   },
 }));
 
@@ -117,6 +119,11 @@ export default function Navbar() {
   return (
     <div className={classes.root}>
       <CssBaseline />
+      <MetaTags
+        title="NewsApp"
+        description="Comprehensive, up-to-date news coverage, aggregated from sources all over the world by NewsApp."
+        href={favicon}
+      />
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
@@ -135,7 +142,11 @@ export default function Navbar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Typography
+            variant="h6"
+            noWrap
+            style={{ marginRight: '20px' }}
+          >
             NewsApp
           </Typography>
           <SearchBar />
