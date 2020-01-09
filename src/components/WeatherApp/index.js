@@ -4,7 +4,12 @@ import useGetLocation from '../../customHooks/useGetLocation';
 import useAxios from '../../customHooks/useAxios';
 import TemperatureComponent from './TemperatureComponent';
 import DailyForecast from './DailyForecast';
-import { makeStyles, Typography } from '@material-ui/core';
+import {
+  makeStyles,
+  Typography,
+  ButtonGroup,
+  Button,
+} from '@material-ui/core';
 
 const proxy = `https://cors-anywhere.herokuapp.com/`;
 const api_key = process.env.REACT_APP_DARKSKY_API_KEY;
@@ -17,6 +22,7 @@ const useStyles = makeStyles({
   title: {
     fontSize: 24,
     textTransform: 'uppercase',
+    margin: 0,
   },
   weatherIcon: {
     fontSize: '50px',
@@ -24,6 +30,9 @@ const useStyles = makeStyles({
   },
   dailyForecast: {
     display: 'flex',
+  },
+  button: {
+    marginTop: '5px',
   },
 });
 
@@ -41,13 +50,14 @@ const WeatherApp = () => {
     `${proxy}https://api.darksky.net/forecast/${api_key}/${lat},${lng}`,
   );
 
-  const handleToggleButton = (event) => {
-    const name = event.target.name;
-    if (name === 'C') {
-      setIsToggle({ C: true, F: false });
-    } else if (name === 'F') {
-      setIsToggle({ C: false, F: true });
-    }
+  const handleToggleButtonC = (event) => {
+    event.preventDefault();
+    setIsToggle({ C: true, F: false });
+  };
+
+  const handleToggleButtonF = (event) => {
+    event.preventDefault();
+    setIsToggle({ C: false, F: true });
   };
 
   return (
@@ -82,18 +92,15 @@ const WeatherApp = () => {
         ) : (
           <div>No data</div>
         )}
-        <input
-          type="submit"
-          name="C"
-          value="C"
-          onClick={handleToggleButton}
-        />
-        <input
-          type="submit"
-          name="F"
-          value="F"
-          onClick={handleToggleButton}
-        />
+
+        <ButtonGroup variant="text" className={classes.button}>
+          <Button onClick={handleToggleButtonC} size="small">
+            C
+          </Button>
+          <Button onClick={handleToggleButtonF} size="small">
+            F
+          </Button>
+        </ButtonGroup>
       </div>
     </>
   );

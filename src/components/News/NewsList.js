@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { SearchContext } from '../context/SearchContext';
-import News from '../components/News';
+import { SearchContext } from '../../context/SearchContext';
+import News from './News';
 
 const NewsList = () => {
   const { isError, isLoading, fetchedData } = useContext(
