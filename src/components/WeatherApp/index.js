@@ -93,7 +93,7 @@ const WeatherApp = () => {
           <div>No data</div>
         )}
 
-        <ButtonGroup variant="text" className={classes.button}>
+        <ButtonGroup className={classes.button}>
           <Button onClick={handleToggleButtonC} size="small">
             C
           </Button>
