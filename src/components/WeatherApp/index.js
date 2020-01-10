@@ -102,6 +102,7 @@ const WeatherApp = () => {
           </Button>
         </ButtonGroup>
       </div>
+      <Button size="small">See More</Button>
     </>
   );
 };
