@@ -18,10 +18,12 @@ const useStyles = makeStyles({
 const StockComponent = () => {
   const classes = useStyles();
 
-  const [{ isLoading, isError, fetchedData }] = useAxios(
+  const [{ fetchedData }] = useAxios(
     {},
-    `https://api.worldtradingdata.com/api/v1/stock?symbol=FB,AAPL,AMZN,NFLX,GOOGL&api_token=${API_KEY}`,
+    `https://api.worldtradingdata.com/api/v1/stock?symbol=SNAP&api_token=${API_KEY}`,
   );
+
+  console.log(fetchedData);
 
   return (
     <>

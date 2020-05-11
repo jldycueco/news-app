@@ -45,7 +45,7 @@ const WeatherApp = () => {
   });
 
   const { lat, lng } = useGetLocation();
-  const [{ isLoading, isError, fetchedData }] = useAxios(
+  const [{ fetchedData }] = useAxios(
     {},
     `${proxy}https://api.darksky.net/forecast/${api_key}/${lat},${lng}`,
   );
