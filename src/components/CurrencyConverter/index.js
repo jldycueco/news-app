@@ -47,7 +47,7 @@ const CurrencyConverter = () => {
         <div>No Data</div>
       )}
 
-      <Button size="small">Learn More</Button>
+      <Button size="small">See More</Button>
     </>
   );
 };

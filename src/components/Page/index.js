@@ -196,9 +196,9 @@ export default function Navbar() {
               <Paper className={fixedHeightPaper}>
                 <CurrencyConverter />
               </Paper>
-              <Paper className={fixedHeightPaper}>
+              {/* <Paper className={fixedHeightPaper}>
                 <StockComponent />
-              </Paper>
+              </Paper> */}
             </Grid>
           </Grid>
         </Container>

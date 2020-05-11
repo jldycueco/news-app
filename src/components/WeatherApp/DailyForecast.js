@@ -1,8 +1,9 @@
 import React from 'react';
 import WeatherIcon from 'react-icons-weather';
 import TemperatureComponent from './TemperatureComponent';
+import { isToday, getDay } from 'date-fns';
 
-const GetDay = ({ day }) => {
+const ReturnDay = ({ day }) => {
   let dayString;
   switch (day) {
     case 0:
@@ -34,6 +35,8 @@ const GetDay = ({ day }) => {
 };
 
 const DailyForecast = ({ isToggle, daily }) => {
+  const day = new Date(daily.time * 1000);
+
   return (
     <div
       style={{
@@ -54,13 +57,11 @@ const DailyForecast = ({ isToggle, daily }) => {
         isToggle={isToggle}
       />
 
-      {new Date().getDay() === new Date(daily.time * 1000).getDay() &&
-      new Date().toLocaleDateString() ===
-        new Date(daily.time * 1000).toLocaleDateString() ? (
+      {isToday(day) ? (
         <div>Today</div>
       ) : (
         <div>
-          <GetDay day={new Date(daily.time * 1000).getDay()} />
+          <ReturnDay day={getDay(day)} />
         </div>
       )}
     </div>
